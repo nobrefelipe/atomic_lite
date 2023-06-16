@@ -7,7 +7,7 @@ Atomic State implies using Atoms as a single source of the state.
 
 This library was inpired by [Flutterando's ASP package](https://github.com/Flutterando/asp).
 
-It's called Lite because it does not depend on other packages or setups. It's all based on events and ValueNotiers.
+It's called Lite because it does not depend on other packages or setups. It's all based on events and ValueNotifiers.
 
 ## Atoms
 An Atom is not but an extension of ValueNotifer.
