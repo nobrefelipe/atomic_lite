@@ -1,6 +1,6 @@
 
 # Atomic Lite
-Atomic Lite is a simple and light weight state manager for Flutter. 
+Atomic Lite is a simple and light weight extension to manage state state in Flutter. 
 It is based on the Atomic State pattern. 
 
 Atomic State implies using Atoms as a single source of the state.
