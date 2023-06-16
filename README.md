@@ -85,5 +85,5 @@ It's just a simplified way to use ValueListanableBuilder
 
     // Records
     final someRecord = Atom((message: '', show: false));
-    someRecord.watchRecord((value) => value.show ? Text(value.message) : const SizedBox()),
+    someRecord.watch((value) => value.show ? Text(value.message) : const SizedBox()),
  ```
