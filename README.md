@@ -5,7 +5,7 @@ It is based on the Atomic State pattern.
 
 Atomic State implies using Atoms as a single source of the state.
 
-This library was inpired on <a href"https://github.com/Flutterando/asp">Flutterando's ASP package</a>.
+This library was inpired on <a href"https://github.com/Flutterando/asp">Flutterandos ASP package</a>.
 
 It's called Lite because it does not depend on other packages or setups. It's all based on events and ValueNotiers.
 
