@@ -1,13 +1,17 @@
 
 # Atomic Lite
 Atomic Lite is a simple and light weight extension to manage state state in Flutter. 
+
 It is based on the Atomic State pattern. 
 
 Atomic State implies using Atoms as a single source of the state.
 
+I dont want to call is a state manager or not even a package because it is very simple and  people could just clone this repo and do their own implementation.
+
 This library was inpired by [Flutterando's ASP package](https://github.com/Flutterando/asp).
 
 It's called Lite because it does not depend on other packages or setups. It's all based on events and ValueNotifiers.
+[Flutterando's ASP package](https://github.com/Flutterando/asp) approach is great but it is heavily dependend on [RxNotifer](https://github.com/Flutterando/rx_notifier) and  would like to try the same concept but with a simpler approach.
 
 ## Atoms
 An Atom is not but an extension of ValueNotifer.
