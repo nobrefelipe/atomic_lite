@@ -26,9 +26,9 @@ An Atom is not but an extension of ValueNotifer.
     final isLoading = Atom(false);
     final cities = Atom(<String>[]);
 
-    // We can set a value in defferent ways:
+    // We can set a value in different ways:
 
-    // - using a calleble method
+    // - using a callable method
     isLoading(true);
     // - using setValue method
     isloading.setValue(true);
