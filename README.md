@@ -4,7 +4,7 @@ Atomic Lite is a simple and light weight extension to manage state state in Flut
 
 It is based on the Atomic State pattern. 
 
-Atomic State implies using Atoms as a single source of the state. So no more variable inside controllers, etc.
+Atomic State implies using Atoms as a single source of the state. So no more variables inside controllers, etc.
 It's allbased on Atoms (ValueNotifiers) and Reducers (functions where we change the state of the Atom).
 
 I dont want to call it a state manager or not even a package because it is very simple and  people could just clone this repo and do their own implementation.
