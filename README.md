@@ -87,3 +87,65 @@ It's just a simplified way to use ValueListanableBuilder
     final someRecord = Atom((message: '', show: false));
     someRecord.watch((value) => value.show ? Text(value.message) : const SizedBox()),
  ```
+
+## Reducers
+The simplest way we can reduce the buisiness logic to output the state is by using functions that updates the value of an `Atom`.
+
+```dart
+    //my_atoms.dart
+    final cities = Atom(<String>[]);
+
+    // get_city_reducer.dart
+    void getCities() async {
+        final response = await MyGetCittyRepository.get();
+        // your business logic here...
+        cities.seValue(response.cities);
+    }
+    
+```
+
+For more robust solutions we can also use the `AtomicController` class to create controllers.
+
+`AtomicController` has some useful method to register and trigger events.
+
+```dart
+    // cities_reducer.dart
+    void getCities(dynamic params) async{
+        final response = await MyGetCittyRepository.get();
+        // your business logic here...
+
+        // not that in this case we dont need to use  cities.seValue.
+        // becase the onAtom tigeer bellow will atomitic set the value of cities to the returnoed data.
+        return response.cities;
+    }
+
+    /// cities_controller.dart
+    class CitiesController extends AtomicController {
+        // receive the getCities reducer by dependecy injection
+        // this way we can pass any function to perform the task, making it easy to test.
+        final Function getCities;
+
+        CitiesController.instance(
+            // AtomicController requires an intance of EventHandler. 
+            // EventHandler is the responsible for regitering and firing events.
+            super.eventHandler, {
+            required this.getCities,
+        }) : super.instance() {
+            // onAtom is a trigger to emit the event and invoque the registered recuder.
+            // once the reducer is finished it will update the Atoms value with the returnid data.
+            onAtom(cities, getCities);
+        }
+    }
+
+
+    // my_cties_view.dart
+
+    // define isntances
+    final EventHandler eventHandler = EventHandler();
+    final CitiesController citiesController = CitiesController(eventHandler, getCities: getCitiesFromMock);
+    
+    // Use the GET method passing the Atom name to trigger the reducer register above.
+    // not that we can pass parameter using the params attribute.
+    citiesController.get(cities, params: {'some_filter': "123"});
+
+```
