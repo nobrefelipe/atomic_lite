@@ -66,22 +66,25 @@ It's just a simplified way to use ValueListanableBuilder
  If your Atom has a custom type or even a `Record`, you can use the  `watch` extension.
  ```dart
     // Custom states
-    abstract class MysState();
-    class CarsStateLoading extends MysState();
-    class CarsStateDone extends MysState();
-  
-    final cities<MysState>();
+    sealed class MysState();
+    class StateLoading extends MysState();
+    class StateDone extends MysState();
+    
+    // Atom
+    final cities = Atom<MysState>();
 
+    // View
     cities.watch((state) {
-            if (state is CarsStateLoading) return const CircularProgressIndicator();
-            if (state is CarsStateDone) {
-                return Column(
-                children: state.cars.map((car) => Text(car)).toList(),
-                );
-            }
-            return const SizedBox();
-        },
+        return switch (state) {
+            StateLoading() => const CircularProgressIndicator(),
+            StateDone(cities: final cities) => Column(
+                children: cities.map((city) => Text(city)).toList(),
+            ),
+            _ => const SizedBox(),
+        };
+        }
     ),
+   
 
     // Records
     final someRecord = Atom((message: '', show: false));
