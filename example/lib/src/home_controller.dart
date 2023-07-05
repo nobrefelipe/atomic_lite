@@ -18,14 +18,12 @@ class HomeController extends AtomicController {
 
 class CarsController extends AtomicController {
   CarsController.instance(super.eventHandler) : super.instance() {
-    onString('getCars', _getCars);
+    on(carsState, _getCars);
   }
 
   Future _getCars(_) async {
     carsState(CarsStateLoading());
     await Future.delayed(const Duration(seconds: 2));
-    carsState(
-      CarsStateDone(["audi", "ferrari", "ford"]),
-    );
+    return CarsStateDone(["audi", "ferrari", "ford"]);
   }
 }
