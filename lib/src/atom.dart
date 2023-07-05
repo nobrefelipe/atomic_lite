@@ -22,6 +22,11 @@ class Atom<T> extends ValueNotifier<T> {
     notifyListeners();
   }
 
+  void emit(T newValue) {
+    _value = newValue;
+    notifyListeners();
+  }
+
   /// Re-call all the registered listeners.
   void call(T newValue) {
     _value = newValue;
